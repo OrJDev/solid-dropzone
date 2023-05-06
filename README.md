@@ -15,17 +15,19 @@ pnpm install solidjs-dropzone
 ## Usage
 
 ```tsx
-import { useDropzone } from "solidjs-dropzone";
+import { createDropzone } from "solidjs-dropzone";
 
 function MyDropzone() {
   const onDrop = (acceptedFiles: File[]) => {
     // Do something with the files
   };
-  const { getInputProps, getRootProps, isDragActive } = useDropzone({ onDrop });
+  const { getInputProps, getRootProps, isDragActive } = createDropzone({
+    onDrop,
+  });
   return (
     <div {...getRootProps()}>
       <input {...getInputProps()} />
-      {dropzone.isDragActive ? (
+      {isDragActive ? (
         <p>Drop the files here ...</p>
       ) : (
         <p>Drag 'n' drop some files here, or click to select files</p>
