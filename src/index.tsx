@@ -11,7 +11,12 @@ import {
 } from "solid-js";
 import { createStore } from "solid-js/store";
 import { fromEvent } from "file-selector";
-import accepts from "attr-accept";
+import attrAccepts from "attr-accept";
+
+// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+const accepts: typeof attrAccepts =
+  // @ts-expect-error - ESM interop
+  typeof attrAccepts === "function" ? attrAccepts : attrAccepts.default;
 
 export type ErrorCode =
   | "file-invalid-type"
